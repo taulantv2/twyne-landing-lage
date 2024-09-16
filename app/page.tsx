@@ -1,13 +1,32 @@
 "use client";
-import { Coins, Users, TrendingUp, Shield } from "lucide-react";
+import { Users, TrendingUp, Shield } from "lucide-react";
 import Link from 'next/link';
+import Image from 'next/image';
+import { createElement } from 'react';
 import { useEffect, useRef, useState, useMemo } from 'react';
 
 export default function Component() {
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
   const [currentProtocol, setCurrentProtocol] = useState(0);
-  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Onchain Lending'], []);
+  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Cross-Protocol Lending'], []);
+  // const headerElement = createElement(
+  //   'header',
+  //   { className: 'px-4 lg:px-6 h-16 flex items-center' },
+  //   createElement(
+  //     Link,
+  //     { href: '#', className: 'flex items-center justify-center' },
+  //     createElement(Image, {
+  //       src: '/logo.png',   // Path to your image in the public folder
+  //       alt: 'Twyne Logo',
+  //       width: 40,
+  //       height: 40,
+  //       className: 'h-10 w-10',
+  //     }),
+  //     createElement('span', { className: 'ml-2 text-2xl font-bold text-purple-600' }, 'Twyne')
+  //   )
+  // );
+  
 
   useEffect(() => {
     const animate = () => {
@@ -27,7 +46,7 @@ export default function Component() {
   
     const intervalId = setInterval(() => {
       setCurrentProtocol((prev) => (prev + 1) % protocols.length);
-    }, 3000);
+    }, 2000);
   
     return () => clearInterval(intervalId);
   }, [protocols]);
@@ -51,21 +70,19 @@ export default function Component() {
         {/* Header */}
         <header className="px-4 lg:px-6 h-16 flex items-center">
           <Link className="flex items-center justify-center" href="#">
-            <Coins className="h-6 w-6 text-purple-600" />
-            <span className="ml-2 text-2xl font-bold text-purple-600">Twyne</span>
+            <span className="ml-2 text-2xl font-bold text-black-600">Twyne</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="#get-started">
             <button className="px-4 py-2 font-medium rounded-full shadow-lg relative overflow-hidden bg-gradient-to-r from-gray-400 to-gray-200 text-white transition-all ease-in-out duration-300 cursor-not-allowed">
-  Launch App
-  <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-1/3 rounded-b-full transition-all ease-in-out duration-300"></div>
-  <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
-</button>
+              Launch App
+              <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-2/5 rounded-b-full transition-all ease-in-out duration-300"></div>
+              <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
+            </button>
 
             </Link>
           </nav>
         </header>
-
         {/* Main Content */}
         <main className="flex-1 flex items-center justify-center">
           <div className="container mx-auto px-4 md:px-6 text-center">
@@ -91,7 +108,7 @@ export default function Component() {
               </span>
             </h1>
             <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Restaking Service for Onchain Lending Markets
+              Connecting Lending Markets through a Credit-Layer
             </p>
             <div className="flex justify-center">
               <Link href="#get-started">
@@ -136,8 +153,8 @@ export default function Component() {
               </p>
               <ul className="list-disc list-inside text-gray-600">
                 <strong>Use Aave, but better:</strong> 
-                <li>Boost Borrowing power of Aave collateral</li>
-                <li>Use more Tokens as Collateral</li>
+                <li>Boost borrowing power of Aave collateral</li>
+                <li>Use more tokens as collateral</li>
               </ul>
             </div>
 
@@ -148,12 +165,12 @@ export default function Component() {
                 <h3 className="text-xl font-bold text-gray-900">Liquidator</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Earns yield while securing the protocol
+                Earns yield for securing the protocol
               </p>
               <ul className="list-disc list-inside text-gray-600">
                 <strong>Buy assets at a Discount:</strong> 
                 <li>Liquidate without a technical setup</li>
-                <li>Earn dual rewards until liquidation</li>
+                <li>Earn dual rewards & liquidation incentive</li>
               </ul>
             </div>
           </div>
