@@ -133,7 +133,7 @@ export default function Component() {
               </p>
               <ul className="list-disc list-inside text-gray-600">
                 <strong>Use Aave, but better:</strong> 
-                <li>Boost Borrowing power on existing Aave collateral</li>
+                <li>Boost Borrowing power of Aave collateral</li>
                 <li>Use more Tokens as Collateral</li>
               </ul>
             </div>
