@@ -1,108 +1,3 @@
-// "use client";
-// import { Coins } from "lucide-react";
-// import Link from 'next/link';
-// import { useEffect, useRef, useState } from 'react';
-
-// export default function Component() {
-//   const circle1Ref = useRef<HTMLDivElement>(null);
-//   const circle2Ref = useRef<HTMLDivElement>(null);
-//   const [currentProtocol, setCurrentProtocol] = useState(0);
-//   const protocols = ['Aave', 'Morpho', 'Euler', 'Onchain Lending'];
-
-//   useEffect(() => {
-//     const animate = () => {
-//       if (circle1Ref.current && circle2Ref.current) {
-//         const time = Date.now() / 1000;
-//         const translateY1 = Math.sin(time * 0.5) * 20;
-//         const translateY2 = Math.sin(time * 0.5 + Math.PI) * 20;
-//         circle1Ref.current.style.transform = `translateY(${translateY1}px)`;
-//         circle2Ref.current.style.transform = `translateY(${translateY2}px)`;
-//       }
-//       requestAnimationFrame(animate);
-//     };
-//     animate();
-
-//     const intervalId = setInterval(() => {
-//       setCurrentProtocol((prev) => (prev + 1) % protocols.length);
-//     }, 3000); // Change every 3 seconds
-
-//     return () => clearInterval(intervalId);
-//   }, []);
-
-//   return (
-//     <div className="relative flex flex-col min-h-screen bg-purple-100 text-gray-800 overflow-hidden">
-//       {/* Animated Circles */}
-//       <div
-//         ref={circle1Ref}
-//         className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-purple-300 opacity-20 blur-3xl"
-//         style={{ transition: 'transform 0.5s ease-out' }}
-//       />
-//       <div
-//         ref={circle2Ref}
-//         className="absolute bottom-[-30%] right-[-20%] w-[80vw] h-[80vw] rounded-full bg-purple-200 opacity-20 blur-3xl"
-//         style={{ transition: 'transform 0.5s ease-out' }}
-//       />
-      
-//       {/* Content */}
-//       <div className="relative z-10 flex flex-col min-h-screen">
-//         {/* Header */}
-//         <header className="px-4 lg:px-6 h-16 flex items-center">
-//           <Link className="flex items-center justify-center" href="#">
-//             <Coins className="h-6 w-6 text-purple-600" />
-//             <span className="ml-2 text-2xl font-bold text-purple-600">Twyne</span>
-//           </Link>
-//           <nav className="ml-auto flex gap-4 sm:gap-6">
-//             <Link href="#get-started">
-//               <button className="px-4 py-2 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
-//                 Coming Soon
-//               </button>
-//             </Link>
-//           </nav>
-//         </header>
-
-//         {/* Main Content */}
-//         <main className="flex-1 flex items-center justify-center">
-//           <div className="container mx-auto px-4 md:px-6 text-center">
-//             <p className="text-lg md:text-xl text-purple-600 mb-4">
-//               Earn, Borrow and Liquidate
-//             </p>
-//             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 text-gray-900">
-//               Unlocking
-//               <br />
-//               <span className="relative inline-block h-[1.2em] w-full overflow-hidden">
-//                 {protocols.map((protocol, index) => (
-//                   <span
-//                     key={protocol}
-//                     className="absolute inset-0 w-full flex items-center justify-center transition-all duration-300 ease-in-out"
-//                     style={{
-//                       opacity: currentProtocol === index ? 1 : 0,
-//                       transform: `translateY(${(index - currentProtocol) * 100}%)`,
-//                     }}
-//                   >
-//                     {protocol}
-//                   </span>
-//                 ))}
-//               </span>
-//             </h1>
-//             <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-//               The gateway to access lending markets.
-//             </p>
-//             <div className="flex justify-center">
-//               <Link href="#get-started">
-//                 <button className="px-8 py-3 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
-//                   Coming Soon
-//                 </button>
-//               </Link>
-//             </div>
-//           </div>
-//         </main>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 import { Coins, Users, TrendingUp, Shield } from "lucide-react";
 import Link from 'next/link';
@@ -133,7 +28,7 @@ export default function Component() {
   
     return () => clearInterval(intervalId);
   }, [protocols.length]);
-  
+
   return (
     <div className="bg-purple-100 text-gray-800">
       {/* First Page */}
