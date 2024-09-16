@@ -1,101 +1,269 @@
-import Image from "next/image";
+// "use client";
+// import { Coins } from "lucide-react";
+// import Link from 'next/link';
+// import { useEffect, useRef, useState } from 'react';
 
-export default function Home() {
+// export default function Component() {
+//   const circle1Ref = useRef<HTMLDivElement>(null);
+//   const circle2Ref = useRef<HTMLDivElement>(null);
+//   const [currentProtocol, setCurrentProtocol] = useState(0);
+//   const protocols = ['Aave', 'Morpho', 'Euler', 'Onchain Lending'];
+
+//   useEffect(() => {
+//     const animate = () => {
+//       if (circle1Ref.current && circle2Ref.current) {
+//         const time = Date.now() / 1000;
+//         const translateY1 = Math.sin(time * 0.5) * 20;
+//         const translateY2 = Math.sin(time * 0.5 + Math.PI) * 20;
+//         circle1Ref.current.style.transform = `translateY(${translateY1}px)`;
+//         circle2Ref.current.style.transform = `translateY(${translateY2}px)`;
+//       }
+//       requestAnimationFrame(animate);
+//     };
+//     animate();
+
+//     const intervalId = setInterval(() => {
+//       setCurrentProtocol((prev) => (prev + 1) % protocols.length);
+//     }, 3000); // Change every 3 seconds
+
+//     return () => clearInterval(intervalId);
+//   }, []);
+
+//   return (
+//     <div className="relative flex flex-col min-h-screen bg-purple-100 text-gray-800 overflow-hidden">
+//       {/* Animated Circles */}
+//       <div
+//         ref={circle1Ref}
+//         className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-purple-300 opacity-20 blur-3xl"
+//         style={{ transition: 'transform 0.5s ease-out' }}
+//       />
+//       <div
+//         ref={circle2Ref}
+//         className="absolute bottom-[-30%] right-[-20%] w-[80vw] h-[80vw] rounded-full bg-purple-200 opacity-20 blur-3xl"
+//         style={{ transition: 'transform 0.5s ease-out' }}
+//       />
+      
+//       {/* Content */}
+//       <div className="relative z-10 flex flex-col min-h-screen">
+//         {/* Header */}
+//         <header className="px-4 lg:px-6 h-16 flex items-center">
+//           <Link className="flex items-center justify-center" href="#">
+//             <Coins className="h-6 w-6 text-purple-600" />
+//             <span className="ml-2 text-2xl font-bold text-purple-600">Twyne</span>
+//           </Link>
+//           <nav className="ml-auto flex gap-4 sm:gap-6">
+//             <Link href="#get-started">
+//               <button className="px-4 py-2 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
+//                 Coming Soon
+//               </button>
+//             </Link>
+//           </nav>
+//         </header>
+
+//         {/* Main Content */}
+//         <main className="flex-1 flex items-center justify-center">
+//           <div className="container mx-auto px-4 md:px-6 text-center">
+//             <p className="text-lg md:text-xl text-purple-600 mb-4">
+//               Earn, Borrow and Liquidate
+//             </p>
+//             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 text-gray-900">
+//               Unlocking
+//               <br />
+//               <span className="relative inline-block h-[1.2em] w-full overflow-hidden">
+//                 {protocols.map((protocol, index) => (
+//                   <span
+//                     key={protocol}
+//                     className="absolute inset-0 w-full flex items-center justify-center transition-all duration-300 ease-in-out"
+//                     style={{
+//                       opacity: currentProtocol === index ? 1 : 0,
+//                       transform: `translateY(${(index - currentProtocol) * 100}%)`,
+//                     }}
+//                   >
+//                     {protocol}
+//                   </span>
+//                 ))}
+//               </span>
+//             </h1>
+//             <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+//               The gateway to access lending markets.
+//             </p>
+//             <div className="flex justify-center">
+//               <Link href="#get-started">
+//                 <button className="px-8 py-3 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
+//                   Coming Soon
+//                 </button>
+//               </Link>
+//             </div>
+//           </div>
+//         </main>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+"use client";
+import { Coins, Users, TrendingUp, Shield } from "lucide-react";
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+
+export default function Component() {
+  const circle1Ref = useRef<HTMLDivElement>(null);
+  const circle2Ref = useRef<HTMLDivElement>(null);
+  const [currentProtocol, setCurrentProtocol] = useState(0);
+  const protocols = ['Aave', 'Morpho', 'Euler', 'Onchain Lending'];
+
+  useEffect(() => {
+    const animate = () => {
+      if (circle1Ref.current && circle2Ref.current) {
+        const time = Date.now() / 1000;
+        const translateY1 = Math.sin(time * 0.5) * 20;
+        const translateY2 = Math.sin(time * 0.5 + Math.PI) * 20;
+        circle1Ref.current.style.transform = `translateY(${translateY1}px)`;
+        circle2Ref.current.style.transform = `translateY(${translateY2}px)`;
+      }
+      requestAnimationFrame(animate);
+    };
+    animate();
+
+    const intervalId = setInterval(() => {
+      setCurrentProtocol((prev) => (prev + 1) % protocols.length);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="bg-purple-100 text-gray-800">
+      {/* First Page */}
+      <div className="relative flex flex-col min-h-screen overflow-hidden">
+        {/* Animated Circles */}
+        <div
+          ref={circle1Ref}
+          className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-purple-300 opacity-20 blur-3xl"
+          style={{ transition: 'transform 0.5s ease-out' }}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <div
+          ref={circle2Ref}
+          className="absolute bottom-[-30%] right-[-20%] w-[80vw] h-[80vw] rounded-full bg-purple-200 opacity-20 blur-3xl"
+          style={{ transition: 'transform 0.5s ease-out' }}
+        />
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col min-h-screen">
+          {/* Header */}
+          <header className="px-4 lg:px-6 h-16 flex items-center">
+            <Link className="flex items-center justify-center" href="#">
+              <Coins className="h-6 w-6 text-purple-600" />
+              <span className="ml-2 text-2xl font-bold text-purple-600">Twyne</span>
+            </Link>
+            <nav className="ml-auto flex gap-4 sm:gap-6">
+              <Link href="#get-started">
+                <button className="px-4 py-2 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
+                  Coming Soon
+                </button>
+              </Link>
+            </nav>
+          </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Main Content */}
+          <main className="flex-1 flex items-center justify-center">
+            <div className="container mx-auto px-4 md:px-6 text-center">
+              <p className="text-lg md:text-xl text-purple-600 mb-4">
+                Earn, Borrow and Liquidate
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 text-gray-900">
+                Unlocking
+                <br />
+                <span className="relative inline-block h-[1.2em] w-full overflow-hidden">
+                  {protocols.map((protocol, index) => (
+                    <span
+                      key={protocol}
+                      className="absolute inset-0 w-full flex items-center justify-center transition-all duration-300 ease-in-out"
+                      style={{
+                        opacity: currentProtocol === index ? 1 : 0,
+                        transform: `translateY(${(index - currentProtocol) * 100}%)`,
+                      }}
+                    >
+                      {protocol}
+                    </span>
+                  ))}
+                </span>
+              </h1>
+              <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Restaking Service for Onchain Lending Markets
+              </p>
+              <div className="flex justify-center">
+                <Link href="#get-started">
+                  <button className="px-8 py-3 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
+                    Coming Soon
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </main>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Second Page */}
+      <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Lenders Section */}
+            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <Users className="h-6 w-6 text-purple-600 mr-2" />
+                <h3 className="text-xl font-bold text-gray-900">Lenders</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Gives up borrowing power for more yield
+              </p>
+              <ul className="list-disc list-inside text-gray-600">
+                <strong>Earn dual rewards:</strong> 
+                <li>Aave deposit rates</li>
+                <li>Twyne credit delegation rates</li>
+              </ul>
+            </div>
+
+            {/* Borrowers Section */}
+            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <TrendingUp className="h-6 w-6 text-purple-600 mr-2" />
+                <h3 className="text-xl font-bold text-gray-900">Borrowers</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+              Pays yield to get more borrowing power
+              </p>
+              <ul className="list-disc list-inside text-gray-600">
+                <strong>Use Aave, but better:</strong> 
+                <li>Boost Aave's Collateral Factors</li>
+                <li>Use Long Tails as Collateral</li>
+              </ul>
+            </div>
+
+            {/* Liquidators Section */}
+            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <Shield className="h-6 w-6 text-purple-600 mr-2" />
+                <h3 className="text-xl font-bold text-gray-900">Liquidators</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+              Earns yield while securing the protocol
+              </p>
+              <ul className="list-disc list-inside text-gray-600">
+                <strong>Buy assets at a Discount:</strong> 
+                <li>Liquidate without a technical setup</li>
+                <li>Earn dual rewards until liquidation</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-center text-gray-600 mt-8">
+            These functionalities are fully permissionless built on top, requiring no governance votes or changes within the Aave protocol, ensuring a seamless and efficient user experience.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
