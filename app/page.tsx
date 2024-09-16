@@ -87,7 +87,7 @@ export default function Component() {
                 </span>
               </h1>
               <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Restaking Service for Onchain Lending Markets
+              Restaking Service for Onchain Lending Markets
               </p>
               <div className="flex justify-center">
                 <Link href="#get-started">
