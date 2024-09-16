@@ -126,14 +126,14 @@ export default function Component() {
       requestAnimationFrame(animate);
     };
     animate();
-
+  
     const intervalId = setInterval(() => {
       setCurrentProtocol((prev) => (prev + 1) % protocols.length);
     }, 3000);
-
+  
     return () => clearInterval(intervalId);
-  }, []);
-
+  }, [protocols.length]);
+  
   return (
     <div className="bg-purple-100 text-gray-800">
       {/* First Page */}
