@@ -1,8 +1,8 @@
 "use client";
 import { Users, TrendingUp, Shield } from "lucide-react";
 import Link from 'next/link';
-import Image from 'next/image';
-import { createElement } from 'react';
+// import Image from 'next/image';
+// import { createElement } from 'react';
 import { useEffect, useRef, useState, useMemo } from 'react';
 
 export default function Component() {
