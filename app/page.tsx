@@ -13,7 +13,7 @@ export default function Component() {
     const animate = () => {
       if (circle1Ref.current && circle2Ref.current) {
         const time = Date.now() / 1000;
-        const amplitude = 100; // Amplitude to ensure circles stay within view
+        const amplitude = 200; // Amplitude to ensure circles stay within view
         const translateY1 = Math.sin(time * 0.5) * amplitude;
         const translateX1 = Math.cos(time * 0.5) * amplitude;
         const translateY2 = Math.sin(time * 0.5 + Math.PI) * amplitude;
@@ -56,9 +56,12 @@ export default function Component() {
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="#get-started">
-              <button className="px-4 py-2 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
-                Coming Soon
-              </button>
+            <button className="px-4 py-2 font-medium rounded-full shadow-lg relative overflow-hidden bg-gradient-to-r from-gray-400 to-gray-200 text-white transition-all ease-in-out duration-300 cursor-not-allowed">
+  Launch App
+  <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-1/3 rounded-b-full transition-all ease-in-out duration-300"></div>
+  <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
+</button>
+
             </Link>
           </nav>
         </header>
