@@ -110,7 +110,7 @@ export default function Component() {
             <div className="bg-purple-50 rounded-lg p-6 shadow-md">
               <div className="flex items-center mb-4">
                 <Users className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Lenders</h3>
+                <h3 className="text-xl font-bold text-gray-900">Lender</h3>
               </div>
               <p className="text-gray-600 mb-4">
                 Gives up borrowing power for more yield
@@ -126,10 +126,10 @@ export default function Component() {
             <div className="bg-purple-50 rounded-lg p-6 shadow-md">
               <div className="flex items-center mb-4">
                 <TrendingUp className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Borrowers</h3>
+                <h3 className="text-xl font-bold text-gray-900">Borrower</h3>
               </div>
               <p className="text-gray-600 mb-4">
-                Pays yield to get more borrowing power
+                Gives up yield for more borrowing power
               </p>
               <ul className="list-disc list-inside text-gray-600">
                 <strong>Use Aave, but better:</strong> 
@@ -142,7 +142,7 @@ export default function Component() {
             <div className="bg-purple-50 rounded-lg p-6 shadow-md">
               <div className="flex items-center mb-4">
                 <Shield className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Liquidators</h3>
+                <h3 className="text-xl font-bold text-gray-900">Liquidator</h3>
               </div>
               <p className="text-gray-600 mb-4">
                 Earns yield while securing the protocol
