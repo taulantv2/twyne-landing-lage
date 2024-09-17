@@ -153,7 +153,18 @@ export default function Component() {
       <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
-          
+
+          {/* Big Image
+          <div className="mb-16">
+            <Image
+              src="/overview.svg"
+              alt="How Twyne Works"
+              width={800}
+              height={400}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div> */}
+
           {/* Big Image */}
           <div className="mb-16">
             <Image
