@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { FaTwitter, FaTelegramPlane } from 'react-icons/fa'; 
+
 
 export default function Component() {
   const circle1Ref = useRef<HTMLDivElement>(null);
@@ -128,12 +130,20 @@ export default function Component() {
             <p className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               Connecting Lending Markets through a Credit-Layer
             </p>
-            <div className="flex justify-center">
+            <div className="flex flex-col items-center justify-center space-y-4"> 
               <Link href="#get-started">
                 <button className="px-8 py-3 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
                   Coming Soon
                 </button>
               </Link>
+              <div className="flex justify-center space-x-4">  {/* This container will hold both icons */}
+                <a href="https://twitter.com/twyne_xyz" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-purple-600 hover:text-purple-700 transition-colors">
+                  <FaTwitter size={24} />
+                </a>
+                <a href="https://t.me/taulantx" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-purple-600 hover:text-purple-700 transition-colors">
+                  <FaTelegramPlane size={24} /> {/* Ensure you replace 'yourtelegram' with your actual Telegram link */}
+                </a>
+              </div>
             </div>
           </div>
         </main>
