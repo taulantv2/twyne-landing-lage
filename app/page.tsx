@@ -1,38 +1,21 @@
 "use client";
 import { Users, TrendingUp, Shield } from "lucide-react";
 import Link from 'next/link';
-// import Image from 'next/image';
-// import { createElement } from 'react';
+import Image from 'next/image';
 import { useEffect, useRef, useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Component() {
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
   const [currentProtocol, setCurrentProtocol] = useState(0);
-  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Cross-Protocol Lending'], []);
-  // const headerElement = createElement(
-  //   'header',
-  //   { className: 'px-4 lg:px-6 h-16 flex items-center' },
-  //   createElement(
-  //     Link,
-  //     { href: '#', className: 'flex items-center justify-center' },
-  //     createElement(Image, {
-  //       src: '/logo.png',   // Path to your image in the public folder
-  //       alt: 'Twyne Logo',
-  //       width: 40,
-  //       height: 40,
-  //       className: 'h-10 w-10',
-  //     }),
-  //     createElement('span', { className: 'ml-2 text-2xl font-bold text-purple-600' }, 'Twyne')
-  //   )
-  // );
-  
+  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Cross Protocol Lending'], []);
 
   useEffect(() => {
     const animate = () => {
       if (circle1Ref.current && circle2Ref.current) {
         const time = Date.now() / 1000;
-        const amplitude = 200; // Amplitude to ensure circles stay within view
+        const amplitude = 200;
         const translateY1 = Math.sin(time * 0.5) * amplitude;
         const translateX1 = Math.cos(time * 0.5) * amplitude;
         const translateY2 = Math.sin(time * 0.5 + Math.PI) * amplitude;
@@ -48,8 +31,33 @@ export default function Component() {
       setCurrentProtocol((prev) => (prev + 1) % protocols.length);
     }, 2000);
   
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [protocols]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
 
   return (
     <div className="relative flex flex-col min-h-screen overflow-hidden bg-white text-gray-800">
@@ -58,11 +66,13 @@ export default function Component() {
         ref={circle1Ref}
         className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-300 opacity-30 blur-3xl"
         style={{ transition: 'transform 0.5s ease-out' }}
+        aria-hidden="true"
       />
       <div
         ref={circle2Ref}
         className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-200 opacity-30 blur-3xl"
         style={{ transition: 'transform 0.5s ease-out' }}
+        aria-hidden="true"
       />
       
       {/* Main Content */}
@@ -70,19 +80,27 @@ export default function Component() {
         {/* Header */}
         <header className="px-4 lg:px-6 h-16 flex items-center">
           <Link className="flex items-center justify-center" href="#">
-            <span className="ml-2 text-2xl font-bold text-black-600">Twyne</span>
+          <Image
+            src="/logo.png" // Adjusted path if the image is in a 'images' folder inside the public directory
+            alt="Twyne Logo"
+            width={40}
+            height={40}
+            className="h-10 w-10"
+          />
+
+            <span className="ml-2 text-2xl font-bold text-black">Twyne</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="#get-started">
-            <button className="px-4 py-2 font-medium rounded-full shadow-lg relative overflow-hidden bg-gradient-to-r from-gray-400 to-gray-200 text-white transition-all ease-in-out duration-300 cursor-not-allowed">
-              Launch App
-              <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-2/5 rounded-b-full transition-all ease-in-out duration-300"></div>
-              <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
-            </button>
-
+              <button className="px-4 py-2 font-medium rounded-full shadow-lg relative overflow-hidden bg-gradient-to-r from-gray-400 to-gray-200 text-white transition-all ease-in-out duration-300 cursor-not-allowed" aria-label="Launch App (Coming Soon)">
+                Launch App
+                <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-2/5 rounded-b-full transition-all ease-in-out duration-300"></div>
+                <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
+              </button>
             </Link>
           </nav>
         </header>
+
         {/* Main Content */}
         <main className="flex-1 flex items-center justify-center">
           <div className="container mx-auto px-4 md:px-6 text-center">
@@ -125,60 +143,66 @@ export default function Component() {
       <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Lenders Section */}
-            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
-              <div className="flex items-center mb-4">
-                <Users className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Lender</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Gives up borrowing power for more yield
-              </p>
-              <ul className="list-disc list-inside text-gray-600">
-                <strong>Earn dual rewards:</strong> 
-                <li>Aave deposit rates</li>
-                <li>Twyne credit delegation rates</li>
-              </ul>
-            </div>
-
-            {/* Borrowers Section */}
-            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
-              <div className="flex items-center mb-4">
-                <TrendingUp className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Borrower</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Gives up yield for more borrowing power
-              </p>
-              <ul className="list-disc list-inside text-gray-600">
-                <strong>Use Aave, but better:</strong> 
-                <li>Boost borrowing power of Aave collateral</li>
-                <li>Use more tokens as collateral</li>
-              </ul>
-            </div>
-
-            {/* Liquidators Section */}
-            <div className="bg-purple-50 rounded-lg p-6 shadow-md">
-              <div className="flex items-center mb-4">
-                <Shield className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-xl font-bold text-gray-900">Liquidator</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Earns yield for securing the protocol
-              </p>
-              <ul className="list-disc list-inside text-gray-600">
-                <strong>Buy assets at a Discount:</strong> 
-                <li>Liquidate without a technical setup</li>
-                <li>Earn dual rewards & liquidation incentive</li>
-              </ul>
-            </div>
+          
+          {/* Big Image */}
+          <div className="mb-16">
+            <Image
+              src="/how-it-works.svg"
+              alt="How Twyne Works"
+              width={800}
+              height={400}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
-          <p className="text-center text-gray-600 mt-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {[
+              { icon: Users, title: "Lender", description: "Give up borrowing power for more yield", benefits: ["Restake to earn dual rewards", "Aave deposit rates", "Twyne credit delegation rates"] },
+              { icon: TrendingUp, title: "Borrower", description: "Give up yield for more borrowing power", benefits: ["Use Aave, but better", "Boost borrowing power of Aave collateral", "Use more tokens as collateral"] },
+              { icon: Shield, title: "Liquidator", description: "Earn yield for securing the protocol", benefits: ["Buy assets at a Discount", "Liquidate without a technical setup", "Earn dual rewards & liquidation incentive"] }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                variants={itemVariants}
+              >
+                <div className="flex items-center mb-4">
+                  <item.icon className="h-8 w-8 text-purple-600 mr-3" aria-hidden="true" />
+                  <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
+                </div>
+                <p className="text-gray-600 mb-4 text-lg">
+                  {item.description}
+                </p>
+                <ul className="space-y-2">
+                  {item.benefits.map((benefit, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="h-6 w-6 flex items-center justify-center bg-purple-100 rounded-full mr-2 mt-1">
+                        <span className="text-purple-600 text-sm">✓</span>
+                      </span>
+                      <span className="text-gray-700">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+          <p className="text-center text-gray-600 mt-12 text-lg">
             These functionalities are fully permissionless built on top, requiring no governance votes or changes within the Aave protocol, ensuring a seamless and efficient user experience.
           </p>
         </div>
       </div>
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+        <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Twyne Labs. All rights reserved.</p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-xs hover:underline underline-offset-4" href="#">
+            Terms of Service
+          </Link>
+        </nav>
+      </footer>
     </div>
   );
 }
