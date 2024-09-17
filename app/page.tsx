@@ -164,7 +164,7 @@ export default function Component() {
               { icon: Users, title: "Lender", description: "Give up borrowing power for more yield", benefits: ["Restake to earn dual rewards", "Aave deposit rates", "Twyne credit delegation rates"] },
               { icon: TrendingUp, title: "Borrower", description: "Give up yield for more borrowing power", benefits: ["Use Aave, but better", "Boost borrowing power of Aave collateral", "Use more tokens as collateral"] },
               { icon: Shield, title: "Liquidator", description: "Earn yield for securing the protocol", benefits: ["Buy assets at a Discount", "Liquidate without a technical setup", "Earn dual rewards & liquidation incentive"] }
-            ].map((item, index) => (
+            ].map((item) => (
               <motion.div
                 key={item.title}
                 className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
