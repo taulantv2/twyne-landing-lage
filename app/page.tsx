@@ -35,6 +35,11 @@ const ComingSoonButton = () => {
   );
 };
 
+export const metadata = {
+  title: "My new title",
+  description: "My description",
+}
+
 export default function Component() {
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
