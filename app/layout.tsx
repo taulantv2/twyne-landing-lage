@@ -14,9 +14,14 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Twyne",
-  description: "Twyne",
-};
+  title: 'Twyne',
+  description: 'Connecting Lending Markets through a Credit-Layer',
+  openGraph: {
+    title: 'Twyne',
+    description: 'Connecting Lending Markets through a Credit-Layer',
+    siteName: 'Twyne',
+  },
+}
 
 export default function RootLayout({
   children,
@@ -33,3 +38,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+
