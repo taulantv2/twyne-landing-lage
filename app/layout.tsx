@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -13,14 +12,9 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: 'Twyne',
-  description: 'Connecting Lending Markets through a Credit-Layer',
-  openGraph: {
-    title: 'Twyne',
-    description: 'Connecting Lending Markets through a Credit-Layer',
-    siteName: 'Twyne',
-  },
+export const metadata = {
+  title: "My new title",
+  description: "My description",
 }
 
 export default function RootLayout({
