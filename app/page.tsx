@@ -1,17 +1,45 @@
 "use client";
-import { Users, TrendingUp, Shield } from "lucide-react";
+import { Users, TrendingUp, Shield, Construction} from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaTelegramPlane } from 'react-icons/fa'; 
 
+const ComingSoonButton = () => {
+  return (
+    <button 
+      className="
+        px-6 py-1.5 font-medium rounded-full relative overflow-hidden
+        bg-white text-purple-600 border border-purple-600
+        transition-all duration-300 ease-in-out
+        hover:bg-purple-600 hover:text-white
+        group w-36
+      "
+      aria-label="Launch App (Coming Soon)"
+    >
+      <span className="relative z-10 group-hover:opacity-0 transition-opacity duration-300 flex items-center justify-center w-full">
+        Launch App
+      </span>
+      <span 
+        className="
+          absolute inset-0 opacity-0
+          group-hover:opacity-100 transition-opacity duration-300 ease-in-out
+          flex items-center justify-center font-bold
+        "
+      >
+        <Construction className="w-4 h-4 mr-2" />
+        Coming Soon
+      </span>
+    </button>
+  );
+};
 
 export default function Component() {
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
   const [currentProtocol, setCurrentProtocol] = useState(0);
-  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Cross Protocol Lending'], []);
+  const protocols = useMemo(() => ['Aave', 'Morpho', 'Euler', 'Cross Market Lending'], []);
 
   useEffect(() => {
     const animate = () => {
@@ -82,23 +110,18 @@ export default function Component() {
         {/* Header */}
         <header className="px-4 lg:px-6 h-16 flex items-center">
           <Link className="flex items-center justify-center" href="#">
-          <Image
-            src="/logo.png" // Adjusted path if the image is in a 'images' folder inside the public directory
-            alt="Twyne Logo"
-            width={40}
-            height={40}
-            className="h-10 w-10"
-          />
-
+            <Image
+              src="/logo.png"
+              alt="Twyne Logo"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+            />
             <span className="ml-2 text-2xl font-bold text-black">Twyne</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="#get-started">
-              <button className="px-4 py-2 font-medium rounded-full shadow-lg relative overflow-hidden bg-gradient-to-r from-gray-400 to-gray-200 text-white transition-all ease-in-out duration-300 cursor-not-allowed" aria-label="Launch App (Coming Soon)">
-                Launch App
-                <div className="absolute bottom-0 left-0 bg-purple-600 h-1 w-2/5 rounded-b-full transition-all ease-in-out duration-300"></div>
-                <div className="absolute inset-0 bg-black opacity-20 rounded-full"></div>
-              </button>
+              <ComingSoonButton />
             </Link>
           </nav>
         </header>
@@ -131,17 +154,12 @@ export default function Component() {
               Connecting Lending Markets through a Credit-Layer
             </p>
             <div className="flex flex-col items-center justify-center space-y-4"> 
-              <Link href="#get-started">
-                <button className="px-8 py-3 bg-purple-600 text-white font-medium rounded-full shadow-md hover:bg-purple-700 transition-colors">
-                  Coming Soon
-                </button>
-              </Link>
-              <div className="flex justify-center space-x-4">  {/* This container will hold both icons */}
+              <div className="flex justify-center space-x-4">
                 <a href="https://twitter.com/twyne_xyz" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-purple-600 hover:text-purple-700 transition-colors">
                   <FaTwitter size={24} />
                 </a>
                 <a href="https://t.me/taulantx" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-purple-600 hover:text-purple-700 transition-colors">
-                  <FaTelegramPlane size={24} /> {/* Ensure you replace 'yourtelegram' with your actual Telegram link */}
+                  <FaTelegramPlane size={24} />
                 </a>
               </div>
             </div>
@@ -153,17 +171,6 @@ export default function Component() {
       <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
-
-          {/* Big Image
-          <div className="mb-16">
-            <Image
-              src="/overview.svg"
-              alt="How Twyne Works"
-              width={800}
-              height={400}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div> */}
 
           {/* Big Image */}
           <div className="mb-16">
