@@ -170,20 +170,18 @@ export default function Component() {
       {/* Second Page */}
       <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
-
-          {/* Big Image */}
-          <div className="mb-16">
-            <Image
-              src="/how-it-works.svg"
-              alt="How Twyne Works"
-              width={800}
-              height={400}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
+          {/* New Header Section */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+              Structuring DeFi
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Twyne is an advanced Lending Market integration that introduces modular risk management by introducing a division of roles among Lenders, Borrowers, and Liquidators. Unlike traditional one-size-fits-all offering, our segmented approach optimizes performance, enhances resilience, and maximizes value creation. 
+              </p>
           </div>
+
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -218,6 +216,20 @@ export default function Component() {
               </motion.div>
             ))}
           </motion.div>
+          
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
+
+          {/* Big Image */}
+          <div className="mb-16">
+            <Image
+              src="/how-it-works.svg"
+              alt="How Twyne Works"
+              width={800}
+              height={400}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+          
           <p className="text-center text-gray-600 mt-12 text-lg">
             These functionalities are fully permissionless built on top, requiring no governance votes or changes within the Aave protocol, ensuring a seamless and efficient user experience.
           </p>
